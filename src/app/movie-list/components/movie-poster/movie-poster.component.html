@@ -1,0 +1,7 @@
+<ng-container *ngIf="!!movie?.pic; else emptyTemplate">
+  <a class="movie-poster d-flex" [style.background-image]="'url(' + movie?.pic + ')'" [href]="movie?.link" target="_blank"> </a>
+</ng-container>
+
+<ng-template #emptyTemplate>
+  <a class="movie-poster empty d-flex" [href]="movie?.link" target="_blank"> </a>
+</ng-template>

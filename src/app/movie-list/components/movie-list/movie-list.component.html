@@ -1,0 +1,22 @@
+<app-search-box class="w-50 align-self-center mb-4" (searchCriteriaChanged)="onSearchCriteriaChanged($event)"></app-search-box>
+<div class="d-flex flex-grow-1 flex-wrap justify-content-center">
+  <ng-container *ngIf="loading$ | async; then loadingTemplate; else movieListTemplate"></ng-container>
+</div>
+
+<ng-template #movieListTemplate>
+  <ng-container *ngIf="movies$ | async as movies">
+    <ng-container *ngIf="movies.length > 0; else emptyTemplate">
+      <ng-container *ngFor="let movie of movies; trackBy: trackByFn">
+        <app-movie [movie]="movie"></app-movie>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <div class="screen-loader"></div>
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <div class="font-weight-bold">please search to get results</div>
+</ng-template>

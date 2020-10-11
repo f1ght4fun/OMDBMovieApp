@@ -1,0 +1,5 @@
+<ng-container *ngIf="themeUrl$ | async as themeUrl">
+  <link rel="stylesheet" [href]="themeUrl | safeUrl" />
+</ng-container>
+
+<router-outlet></router-outlet>
